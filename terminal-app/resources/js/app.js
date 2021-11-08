@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import Vue from "vue";
-import ExampleComponent from "./components/ExampleComponent";
+import HelloWorld from "./components/HelloWorld";
 
 require('./bootstrap');
 
@@ -29,7 +29,7 @@ window.Vue = require('vue').default;
 
 const app = new Vue({
     el: '#app',
-    components: [
-        ExampleComponent
-    ]
+    components: {
+        HelloWorld,
+    }
 });
