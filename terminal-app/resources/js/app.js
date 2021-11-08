@@ -4,11 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld";
 
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+
+Vue.component('index', require('./index').default);
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,8 +29,5 @@ window.Vue = require('vue').default;
  */
 
 const app = new Vue({
-    el: '#app',
-    components: {
-        HelloWorld,
-    }
+    el: '#app'
 });
