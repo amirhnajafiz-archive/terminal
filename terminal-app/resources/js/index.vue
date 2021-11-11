@@ -1,16 +1,16 @@
 <template>
     <div class="container-fluid">
-        <HelloWorld />
+        <Home />
     </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import Home from "./components/Home";
 
 export default {
     name: "index",
     components: {
-        HelloWorld
+        Home
     }
 }
 </script>
