@@ -2100,8 +2100,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Terminal"
+  name: "Terminal",
+  data: function data() {
+    return {
+      command: "",
+      banner: {
+        header: "Terminal Project",
+        subHeader: "Use terminal project to communicate with our server.",
+        emoji: {
+          first: "*",
+          second: "*",
+          time: Date.now()
+        },
+        img: null,
+        sign: "user$"
+      },
+      commands: [{
+        name: "help",
+        desc: "Enter help to see the manual",
+        get: function get() {
+          return "Help manual";
+        }
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -38750,7 +38777,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-shell")
+  return _c("v-shell", {
+    attrs: {
+      banner: _vm.banner,
+      shell_input: _vm.command,
+      commands: _vm.commands
+    }
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
