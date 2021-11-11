@@ -4,12 +4,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import Vue from "vue";
+import shell from "vue-shell";
 
 require('./bootstrap');
 
 window.Vue = require('vue').default;
 
 Vue.component('index', require('./index').default);
+Vue.use(shell);
 
 /**
  * The following block of code may be used to automatically register your

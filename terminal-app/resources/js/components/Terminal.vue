@@ -1,5 +1,5 @@
 <template>
-
+        <v-shell></v-shell>
 </template>
 
 <script>

@@ -3,12 +3,15 @@
         <h1>
             Hi this is terminal in Vue!
         </h1>
+        <Terminal />
     </div>
 </template>
 
 <script>
+    import Terminal from "./Terminal";
     export default {
-        name: "Home"
+        name: "Home",
+        components: {Terminal}
     }
 </script>
 
