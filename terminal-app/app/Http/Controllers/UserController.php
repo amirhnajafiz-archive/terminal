@@ -48,23 +48,20 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param $name
+     * @return JsonResponse
      */
-    public function show($id)
+    public function show($name): JsonResponse
     {
-        //
-    }
+        $user = User::query()
+            ->where('name', '=', $name)
+            ->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()
+            ->json([
+                'status' => $user ? 'OK' : 'FAIL',
+                'user' => $user->name ?? 'None'
+            ]);
     }
 
     /**
@@ -72,11 +69,20 @@ class UserController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): JsonResponse
     {
-        //
+        $user = User::query()
+            ->findOrFail($id);
+
+        $user->update($request->all());
+
+        return response()
+            ->json([
+                'status' => 'OK',
+                'name' => $user->name ?? 'None'
+            ]);
     }
 
     /**
