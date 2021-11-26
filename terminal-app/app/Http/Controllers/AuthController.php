@@ -25,4 +25,21 @@ class AuthController extends Controller
                 'token' => $token
             ]);
     }
+
+    public function logout(Request $request): JsonResponse
+    {
+        $name = $request->get('name');
+        $token = $request->get('token');
+
+        if (session()->exists($name) && session()->get($name) == $token)
+        {
+            session()
+                ->flashInput($name);
+        }
+
+        return response()
+            ->json([
+                'status' => 'logged out'
+            ]);
+    }
 }
