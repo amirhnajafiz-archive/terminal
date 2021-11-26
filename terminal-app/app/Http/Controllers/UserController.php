@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 /**
  * Handling the user register and sign-up feature.
@@ -41,6 +40,7 @@ class UserController extends Controller
         return response()
             ->json([
                 'name' => $user->name ?? 'None',
+                'id' => $user->id ?? 'None',
                 'date' => $user->created_at ?? 'None'
             ]);
     }
@@ -60,7 +60,8 @@ class UserController extends Controller
         return response()
             ->json([
                 'status' => $user ? 'OK' : 'FAIL',
-                'user' => $user->name ?? 'None'
+                'user' => $user->name ?? 'None',
+                'id' => $user->id ?? 'None'
             ]);
     }
 
@@ -89,10 +90,17 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
-        //
+        User::query()
+            ->findOrFail($id)
+            ->delete();
+
+        return response()
+            ->json([
+                'status' => 'deleted'
+            ]);
     }
 }
