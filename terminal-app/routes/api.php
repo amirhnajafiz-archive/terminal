@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\UserTokenCheck;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('user', UserController::class)
-    ->only(['store', 'update', 'destroy']);
+    ->only(['update', 'destroy'])
+    ->middleware([UserTokenCheck::class]);
+
+Route::resource('user', UserController::class)
+    ->only(['store']);
