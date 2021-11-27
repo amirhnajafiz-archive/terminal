@@ -40,6 +40,7 @@ class KeepUserUntil implements ShouldQueue
      */
     public function handle()
     {
-        Redis::del($this->name);
+        if (Redis::exists($this->name))
+            Redis::del($this->name); // Removing user from online users
     }
 }
