@@ -8,8 +8,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use TheSeer\Tokenizer\Token;
 
+/**
+ * Handles the authentication features.
+ *
+ */
 class AuthController extends Controller
 {
+    /**
+     * Method for logging in a user.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function login(Request $request): JsonResponse
     {
         $name = $request->get('name');
@@ -27,6 +37,12 @@ class AuthController extends Controller
             ]);
     }
 
+    /**
+     * Method for logging out a user.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function logout(Request $request): JsonResponse
     {
         $name = $request->get('name');
