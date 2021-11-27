@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\KeepUserUntil;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -27,6 +28,10 @@ class AuthController extends Controller
         if (User::query()->where('name', '=', $name)->exists()) {
             $token = (new Token(1, $name, $name));
             Redis::set($name, $token);
+
+            KeepUserUntil::dispatch($name)
+                ->delay(now()->addHours(5)); // Keeping the user online for 5 hours
+
         } else {
             $token = 'None';
         }
