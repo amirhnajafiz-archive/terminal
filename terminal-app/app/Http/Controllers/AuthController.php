@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use TheSeer\Tokenizer\Token;
 
 class AuthController extends Controller
@@ -15,7 +16,7 @@ class AuthController extends Controller
 
         if (User::query()->where('name', '=', $name)->exists()) {
             $token = (new Token(1, $name, $name));
-            session($name, $token);
+            Redis::set($name, $token);
         } else {
             $token = 'None';
         }
@@ -31,10 +32,9 @@ class AuthController extends Controller
         $name = $request->get('name');
         $token = $request->get('token');
 
-        if (session()->exists($name) && session()->get($name) == $token)
+        if (Redis::exists($name) && Redis::get($name) == $token)
         {
-            session()
-                ->flashInput($name);
+            Redis::del($name);
         }
 
         return response()

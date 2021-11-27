@@ -115,6 +115,7 @@
       <path value="$PROJECT_DIR$/terminal-app/vendor/sebastian/comparator" />
       <path value="$PROJECT_DIR$/terminal-app/vendor/sebastian/code-unit" />
       <path value="$PROJECT_DIR$/terminal-app/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/terminal-app/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3">
