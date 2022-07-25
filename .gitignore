@@ -1,0 +1,10 @@
+# general
+# macOS
+.DS_Store
+
+# ide
+# jetbrains
+.idea/
+# vs 
+.vscode/
+
