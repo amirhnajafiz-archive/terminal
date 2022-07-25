@@ -1,2 +1,4 @@
-# Teminal-Project
-Create a bash terminal with Laravel and Vue.js
+# Teminal
+
+Creating a bash terminal with **Golang** and **Vue.js**.
+
