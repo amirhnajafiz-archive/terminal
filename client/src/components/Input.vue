@@ -1,12 +1,12 @@
 <template>
   <div style="width: 100%">
-    <input class="normal" type="text" />
+    <input id="cmd" class="normal" type="text" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "Input"
+  name: "Input",
 }
 </script>
 
