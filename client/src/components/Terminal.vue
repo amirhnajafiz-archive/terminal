@@ -13,7 +13,9 @@
       <span class="right">
         $/
       </span>
-      <Input />
+      <Input
+          @submit="addCommand"
+      />
     </div>
   </div>
 </template>

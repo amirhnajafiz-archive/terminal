@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     click() {
-      console.log(this.in)
+      this.$emit('submit', this.in)
       this.in = ""
     }
   }
