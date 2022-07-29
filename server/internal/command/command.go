@@ -1,9 +1,7 @@
 package command
 
 import (
-	"fmt"
-	"time"
-
+	"github.com/amirhnajafiz/terminal/server/internal/command/handler"
 	"github.com/amirhnajafiz/terminal/server/internal/types"
 )
 
@@ -14,12 +12,8 @@ func NewCommand(u string, a func([]string) (string, error)) *types.Command {
 	}
 }
 
-func timer(_ []string) (string, error) {
-	return fmt.Sprintln(time.Now()), nil
-}
-
 func Register() []*types.Command {
 	return []*types.Command{
-		NewCommand("time", timer),
+		NewCommand("time", handler.GetTime),
 	}
 }
