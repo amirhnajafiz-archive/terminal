@@ -18,6 +18,7 @@ func create(u string, a func([]string) (string, error)) *Command {
 
 func Register(t terminal.Terminal) map[string]*Command {
 	return map[string]*Command{
+		"help":   create("help", t.GetHelp),
 		"time":   create("time", t.GetTime),
 		"whoami": create("whoami", t.GetUser),
 		"os":     create("os", t.GetOS),

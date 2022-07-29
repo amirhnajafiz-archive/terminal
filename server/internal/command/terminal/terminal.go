@@ -11,10 +11,11 @@ type Terminal struct {
 }
 
 func (_ *Terminal) GetHelp(_ []string) (string, error) {
-	s := `Welcome to terminal.\n
-	[time] get current time\n
-	[whoami] get current user\n
-	[os] get user operating system\n
+	s := `Welcome to terminal.
+	[help]   get terminal help
+	[time]   get current time
+	[whoami] get current user
+	[os]     get user operating system
 `
 
 	return s, nil
