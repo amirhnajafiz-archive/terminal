@@ -5,6 +5,7 @@
         class="normal"
         type="text"
         v-model="this.in"
+        placeholder="..."
         @keydown.enter="click"
     />
   </div>

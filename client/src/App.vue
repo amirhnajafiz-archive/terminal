@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 main {
-  width: 100%;
+  width: 60%;
   margin: 20px auto;
 }
 </style>

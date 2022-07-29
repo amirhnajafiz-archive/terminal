@@ -30,9 +30,7 @@ export default {
   components: {Input, Line},
   data() {
     return {
-      lines: [
-          "hello",
-      ]
+      lines: []
     }
   },
   methods: {
