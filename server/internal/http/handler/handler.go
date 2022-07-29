@@ -3,13 +3,13 @@ package handler
 import (
 	"net/http"
 
-	"github.com/amirhnajafiz/terminal/server/internal/types"
+	"github.com/amirhnajafiz/terminal/server/internal/command"
 	"github.com/amirhnajafiz/terminal/server/pkg/parser"
 	"github.com/labstack/echo/v4"
 )
 
 type Handler struct {
-	Commands map[string]*types.Command
+	Commands map[string]*command.Command
 }
 
 func (h *Handler) Input(e echo.Context) error {
