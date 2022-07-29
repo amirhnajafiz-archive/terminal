@@ -30,7 +30,7 @@ export default {
   components: {Input, Line},
   data() {
     return {
-      lines: []
+      lines: [],
     }
   },
   methods: {

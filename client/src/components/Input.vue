@@ -7,6 +7,8 @@
         v-model="this.in"
         placeholder="..."
         @keydown.enter="click"
+        @keydown.up="up"
+        @keydown.down="down"
     />
   </div>
 </template>
@@ -16,7 +18,9 @@ export default {
   name: "Input",
   data() {
     return {
-      in: ""
+      in: "",
+      messageHistory: [],
+      index: 0,
     }
   },
   methods: {
@@ -24,9 +28,23 @@ export default {
       if (this.in === "clear") {
         this.$emit('clear')
       } else {
+        this.messageHistory.push(this.in)
         this.$emit('submit', this.in)
       }
       this.in = ""
+      this.index = 0
+    },
+    up() {
+      if (this.index !== this.messageHistory.length) {
+        this.index++
+      }
+      this.in = this.messageHistory[this.messageHistory.length - this.index]
+    },
+    down() {
+      if (this.index !== 0) {
+        this.index--
+      }
+      this.in = this.messageHistory[this.messageHistory.length - this.index]
     }
   }
 }
