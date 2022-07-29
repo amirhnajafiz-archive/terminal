@@ -1,12 +1,29 @@
 <template>
   <div style="width: 100%">
-    <input id="cmd" class="normal" type="text" />
+    <input
+        id="cmd"
+        class="normal"
+        type="text"
+        v-model="this.in"
+        @keydown.enter="click"
+    />
   </div>
 </template>
 
 <script>
 export default {
   name: "Input",
+  data() {
+    return {
+      in: ""
+    }
+  },
+  methods: {
+    click() {
+      console.log(this.in)
+      this.in = ""
+    }
+  }
 }
 </script>
 
