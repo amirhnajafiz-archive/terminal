@@ -1,4 +1,4 @@
-package model
+package types
 
 type Command struct {
 	Use    string                    `json:"use"`
