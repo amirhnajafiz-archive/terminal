@@ -7,7 +7,7 @@ import (
 	"runtime"
 
 	"github.com/amirhnajafiz/terminal/server/internal/command"
-	"github.com/amirhnajafiz/terminal/server/internal/command/handler"
+	"github.com/amirhnajafiz/terminal/server/internal/command/terminal"
 	"github.com/labstack/echo/v4"
 )
 
@@ -17,12 +17,12 @@ func Execute() {
 		log.Fatalf(err.Error())
 	}
 
-	h := handler.Handler{
+	t := terminal.Terminal{
 		User: u.Username,
 		OS:   runtime.GOOS,
 	}
 
-	command.Register(h)
+	command.Register(t)
 
 	e := echo.New()
 	e.GET("/api/cmd", func(c echo.Context) error {
