@@ -5,15 +5,17 @@
         :data="'$/ ' + line"
     >
     </Line>
+    <Input />
   </div>
 </template>
 
 <script>
 import Line from "@/components/Line.vue";
+import Input from "@/components/Input.vue";
 
 export default {
   name: "Terminal",
-  components: {Line},
+  components: {Input, Line},
   data() {
     return {
       lines: [
