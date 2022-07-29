@@ -20,7 +20,11 @@ export default {
   },
   methods: {
     click() {
-      this.$emit('submit', this.in)
+      if (this.in === "clear") {
+        this.$emit('clear')
+      } else {
+        this.$emit('submit', this.in)
+      }
       this.in = ""
     }
   }

@@ -15,6 +15,7 @@
       </span>
       <Input
           @submit="addCommand"
+          @clear="clear"
       />
     </div>
   </div>
@@ -37,6 +38,9 @@ export default {
   methods: {
     addCommand(str) {
       this.lines.push(str)
+    },
+    clear() {
+      this.lines = []
     }
   }
 }
