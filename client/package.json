@@ -1,11 +1,16 @@
 {
-  "name": "terminal-client",
-  "version": "1.0.0",
-  "description": "Creating a client for our terminal app",
-  "main": "index.js",
+  "name": "client",
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
   },
-  "author": "amirhnajafiz",
-  "license": "ISC"
+  "dependencies": {
+    "vue": "^3.2.37"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.1",
+    "vite": "^3.0.1"
+  }
 }
