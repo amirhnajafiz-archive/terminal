@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/amirhnajafiz/terminal/server/internal/command"
@@ -13,22 +14,32 @@ type Handler struct {
 }
 
 func (h *Handler) Input(e echo.Context) error {
-	var (
-		r Request
-	)
+	var r Request
 
 	_ = e.Bind(&r)
 
-	parts, err := parser.ParseCommand(r.Command)
+	out, err := h.commandHandler(r.Command)
 	if err != nil {
 		return e.String(http.StatusBadRequest, err.Error())
 	}
 
-	if val, ok := h.Commands[parts[0]]; ok {
-		rs, _ := val.Action(nil)
+	return e.String(http.StatusOK, out)
+}
 
-		return e.String(http.StatusOK, rs)
+func (h *Handler) commandHandler(c string) (string, error) {
+	parts, err := parser.ParseCommand(c)
+	if err != nil {
+		return "", err
 	}
 
-	return e.String(http.StatusBadRequest, "empty request")
+	if val, ok := h.Commands[parts[0]]; ok {
+		rs, er := val.Action(nil)
+		if er != nil {
+			return "", er
+		}
+
+		return rs, nil
+	}
+
+	return "", fmt.Errorf("command not found: %s", parts[0])
 }
