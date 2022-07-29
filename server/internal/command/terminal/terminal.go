@@ -8,8 +8,16 @@ import (
 type Terminal struct {
 	OS   string
 	User string
+}
 
-	Current string
+func (_ *Terminal) GetHelp(_ []string) (string, error) {
+	s := `Welcome to terminal.\n
+	[time] get current time\n
+	[whoami] get current user\n
+	[os] get user operating system\n
+`
+
+	return s, nil
 }
 
 func (_ *Terminal) GetTime(_ []string) (string, error) {
