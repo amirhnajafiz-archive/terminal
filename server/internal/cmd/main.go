@@ -26,7 +26,7 @@ func Execute() {
 	}
 	e := echo.New()
 
-	e.GET("/api/cmd", h.Input)
+	e.POST("/api/cmd", h.Input)
 
 	e.Logger.Fatal(e.Start(":5000"))
 }
