@@ -2,12 +2,12 @@ package cmd
 
 import (
 	"log"
-	"net/http"
 	"os/user"
 	"runtime"
 
 	"github.com/amirhnajafiz/terminal/server/internal/command"
 	"github.com/amirhnajafiz/terminal/server/internal/command/terminal"
+	"github.com/amirhnajafiz/terminal/server/internal/http/handler"
 	"github.com/labstack/echo/v4"
 )
 
@@ -21,12 +21,12 @@ func Execute() {
 		User: u.Username,
 		OS:   runtime.GOOS,
 	}
-
-	command.Register(t)
-
+	h := handler.Handler{
+		Commands: command.Register(t),
+	}
 	e := echo.New()
-	e.GET("/api/cmd", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
+
+	e.GET("/api/cmd", h.Input)
+
 	e.Logger.Fatal(e.Start(":5000"))
 }
