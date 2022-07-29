@@ -1,11 +1,20 @@
 <template>
   <div class="container">
-    <Line
-        v-for="line in this.lines"
-        :data="'$/ ' + line"
-    >
-    </Line>
-    <Input />
+    <div class="flex" v-for="line in this.lines">
+      <span class="right">
+        $/
+      </span>
+      <Line
+          :data="line"
+      >
+      </Line>
+    </div>
+    <div class="flex">
+      <span class="right">
+        $/
+      </span>
+      <Input />
+    </div>
   </div>
 </template>
 
@@ -41,5 +50,14 @@ export default {
 
   max-height: 500px;
   overflow: scroll;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.right {
+  margin-right: 10px;
 }
 </style>

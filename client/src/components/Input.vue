@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%">
     <input class="normal" type="text" />
   </div>
 </template>
@@ -12,7 +12,7 @@ export default {
 
 <style scoped>
 .normal {
-  width: available;
+  width: 100%;
   border: 0 solid black;
   outline: none;
 }
