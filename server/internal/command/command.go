@@ -5,15 +5,17 @@ import (
 	"github.com/amirhnajafiz/terminal/server/internal/types"
 )
 
-func NewCommand(u string, a func([]string) (string, error)) *types.Command {
+func create(u string, a func([]string) (string, error)) *types.Command {
 	return &types.Command{
 		Use:    u,
 		Action: a,
 	}
 }
 
-func Register() []*types.Command {
+func Register(h handler.Handler) []*types.Command {
 	return []*types.Command{
-		NewCommand("time", handler.GetTime),
+		create("time", h.GetTime),
+		create("whoami", h.GetUser),
+		create("os", h.GetOS),
 	}
 }
