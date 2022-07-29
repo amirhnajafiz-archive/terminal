@@ -14,8 +14,7 @@ type Handler struct {
 
 func (h *Handler) Input(e echo.Context) error {
 	var (
-		r  types.Request
-		rs types.Response
+		r Request
 	)
 
 	_ = e.Bind(&r)
@@ -26,9 +25,9 @@ func (h *Handler) Input(e echo.Context) error {
 	}
 
 	if val, ok := h.Commands[parts[0]]; ok {
-		rs.Result, err = val.Action(nil)
+		rs, _ := val.Action(nil)
 
-		return e.String(http.StatusOK, rs.Result)
+		return e.String(http.StatusOK, rs)
 	}
 
 	return e.String(http.StatusBadRequest, "empty request")
