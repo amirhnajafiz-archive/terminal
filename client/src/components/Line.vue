@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <div :class="this.getType">
+  <div v-bind:class="this.getType()">
     {{ data }}
   </div>
 </template>

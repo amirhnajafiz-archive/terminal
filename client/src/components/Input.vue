@@ -60,13 +60,22 @@ export default {
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(data)
       });
-      return response.text();
+      return response
     },
     fetch(command) {
       this.postData('http://localhost:5173/api/cmd', {command: command})
-          .then((data) => {
-            console.log(data)
-            this.$emit('submit', data)
+          .then((response) => {
+            if (response.status === 200) {
+              response.text().then((data) => {
+                this.$emit('submit', data, "success")
+              })
+            } else if (response.status !== 500) {
+              response.text().then((data) => {
+                this.$emit('submit', data, "danger")
+              })
+            } else {
+              this.$emit('submit', "server error", "danger")
+            }
           })
     }
   }
