@@ -29,6 +29,7 @@ export default {
         this.$emit('clear')
       } else {
         this.messageHistory.push(this.in)
+        this.fetch(this.in)
         this.$emit('submit', this.in)
       }
       this.in = ""
@@ -45,6 +46,27 @@ export default {
         this.index--
       }
       this.in = this.messageHistory[this.messageHistory.length - this.index]
+    },
+    async postData(url = '', data = {}) {
+      const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+      });
+      return response.json();
+    },
+    fetch(command) {
+      this.postData('http://localhost:3000/api/cmd', {command: command})
+          .then((data) => {
+            console.log(data)
+          })
     }
   }
 }
