@@ -5,7 +5,8 @@
         $/
       </span>
       <Line
-          :data="line"
+          :data="line.msg"
+          :type="line.typ"
       >
       </Line>
     </div>
@@ -34,8 +35,11 @@ export default {
     }
   },
   methods: {
-    addCommand(str) {
-      this.lines.push(str)
+    addCommand(str, type='normal') {
+      this.lines.push({
+        msg: str,
+        typ: type
+      })
     },
     clear() {
       this.lines = []
