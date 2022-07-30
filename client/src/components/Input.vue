@@ -29,8 +29,8 @@ export default {
         this.$emit('clear')
       } else {
         this.messageHistory.push(this.in)
-        this.fetch(this.in)
         this.$emit('submit', this.in)
+        this.fetch(this.in)
       }
       this.in = ""
       this.index = 0
@@ -60,12 +60,13 @@ export default {
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(data)
       });
-      return response.json();
+      return response.text();
     },
     fetch(command) {
-      this.postData('http://localhost:3000/api/cmd', {command: command})
+      this.postData('http://localhost:5173/api/cmd', {command: command})
           .then((data) => {
             console.log(data)
+            this.$emit('submit', data)
           })
     }
   }

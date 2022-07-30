@@ -12,6 +12,13 @@ export default defineConfig({
     }
   },
   server: {
-    proxy: "http://localhost:5000"
+    proxy: {
+      '^/api': {
+        target: 'http://localhost:5000',
+        ws: true,
+        changeOrigin: true,
+        crossOrigin: '*',
+      },
+    }
   }
 })
