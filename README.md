@@ -1,4 +1,6 @@
-# Terminal
+<h1 align="center">
+Terminal
+</h1>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Go-1.18.2-66AADD?style=for-the-badge&logo=go" alt="go version" />
@@ -7,7 +9,7 @@
 
 Creating a bash terminal with **Golang** and **Vue.js**.
 
-## How to use?
+## How to use the project?
 Clone into project:
 ```shell
 git clone https://github.com/amirhnajafiz/terminal.git
