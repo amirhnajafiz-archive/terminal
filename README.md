@@ -1,11 +1,7 @@
-<h1 align="center">
-Terminal
-</h1>
+# Terminal
 
-<p align="center">
-    <img src="https://img.shields.io/badge/Go-1.18.2-66AADD?style=for-the-badge&logo=go" alt="go version" />
-    <img src="https://img.shields.io/badge/Vue-3.0-008866?style=for-the-badge&logo=vue.js" alt="vue version" />
-</p>
+![](https://img.shields.io/badge/Go-1.18.2-66AADD?style=for-the-badge&logo=go)
+![](https://img.shields.io/badge/Vue-3.0-008866?style=for-the-badge&logo=vue.js)
 
 Creating a bash terminal with **Golang** and **Vue.js**.
 
@@ -32,7 +28,7 @@ npm run dev
 Application will be available on **5173**.
 
 ### Demo
-<img src=".github/demo.png" width="1445" alt="demo" />
+<img src=".github/demo.png" width="1000" alt="demo" />
 
 ### Backend testing
 ```
